@@ -1,0 +1,8 @@
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        oset = dict.fromkeys(nums).keys()
+        nums2=list(oset)
+        nums.clear()
+        nums.extend(nums2)
+        k=len(nums)
+        return k
