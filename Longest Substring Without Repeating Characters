@@ -1,0 +1,15 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        seen = set()  # Initialize a set to keep track of characters in the current substring
+        max_length = 0  # Initialize the maximum length of unique substring found so far
+        left = 0  # Initialize the left pointer of the sliding window
+
+        for right, char in enumerate(s):  # Loop over the characters of the string s
+            while char in seen:  # If the current character is already in the seen set
+                seen.remove(s[left])  # Remove characters from the left end of the window until the current character is not in the window
+                left += 1  # Move the left pointer to the right
+            seen.add(char)  # Add the current character to the seen set, as it's now a part of the current substring
+            max_length = max(max_length, right - left + 1)  # Update the maximum length of the unique substring found so far
+                                                            # by taking the maximum of the current max_length and the length
+                                                            # of the current window
+        return max_length  # Return the maximum length of the unique substring
