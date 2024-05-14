@@ -1,0 +1,29 @@
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        n=len(nums)
+        
+        counter = 0
+        i = 0  # Initialize i
+        nums.sort()
+        # print(nums)
+        while i < len(nums):
+            # print("i1",i)
+            for j in range(i + 1, len(nums)):  # Loop starts from i + 1
+                # print("j1",j)
+                if nums[i] == nums[j]:
+                    counter += 1
+            # print("counter",counter)
+            if counter>=1:
+                # print(math.floor(n / 2))
+                if counter >= math.floor(n / 2):
+                    # print("nums[i]",nums[i])
+                    return nums[i]
+                else:
+                    i = i + counter +1
+                    counter = 0
+            else:
+                k = nums[i]
+                i += 1  # Move to the next index
+                counter = 0
+                # print("i2",i)
+        return k
